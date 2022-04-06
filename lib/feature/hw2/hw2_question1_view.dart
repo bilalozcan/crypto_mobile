@@ -89,6 +89,7 @@ class _Hw2Question1ViewState extends State<Hw2Question1View> {
         return false;
       }, orElse: () => null);
       if (user == null) {
+        //! BURADA İTİBAREN ŞİFRE HASHLENİYOR VE KAYIT EDLİYOR
         var bytes = utf8.encode(passwordController.text);
         var hashPassword = sha512.convert(bytes);
         users.add({
@@ -122,6 +123,7 @@ class _Hw2Question1ViewState extends State<Hw2Question1View> {
         return false;
       }, orElse: () => null);
       if (user != null) {
+        //! BURADA KULLANICININ GİRDİĞİ ŞİFRE HASHLENİYOR VE VERİ TABANINDAKİ ŞİFRE İLE KARŞILAŞTIRILIYOR
         var bytes = utf8.encode(passwordController.text);
         var hashPassword = sha512.convert(bytes);
         if (hashPassword.toString() == user['password']) {
@@ -132,10 +134,6 @@ class _Hw2Question1ViewState extends State<Hw2Question1View> {
       } else {
         snackBar('Kayıtlı kullanıcı bulunamadı');
       }
-
-      // print(users);
-      // await LocaleManager.instance.setStringValue('users', jsonEncode(users));
-      // snackBar('Kayıt başarılı');
     } catch (e) {
       snackBar('Kayıt hatalı');
     }
